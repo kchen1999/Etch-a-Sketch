@@ -1,0 +1,15 @@
+
+.container {
+    border-color:aquamarine;
+    border-style: solid;
+    border-width: thin;
+    width: 600px;
+    height: 600px; 
+    background-color: blue;
+}
+
+.row-container{
+    height: 37.5px;
+    background-color: red;
+    display: flex;
+}
