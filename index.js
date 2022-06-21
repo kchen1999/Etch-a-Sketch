@@ -1,7 +1,11 @@
 const gridContainerLength = 480; 
 let sideLength = 16;
 
-const container = document.querySelector('.body-container');
+const container = document.querySelector('.body-container'); 
+
+function changeGridSquareColour(e) {
+    e.style.backgroundColor = "black"; 
+}
 
 function createGrid() {
     for(let i = 0; i < sideLength; i++) {
@@ -15,7 +19,7 @@ function createGrid() {
             gridSquare.classList.add('grid-square'); 
             gridSquare.style.width = gridContainerLength/sideLength + "px"; 
             gridSquare.addEventListener('mouseenter', function(e) {
-                e.target.style.backgroundColor = "black"; 
+                changeGridSquareColour(e.target);
             });
             row.appendChild(gridSquare); 
         }
@@ -31,9 +35,17 @@ createGrid();
 
 const btn = document.querySelector('button'); 
 btn.addEventListener('click', () => {
-    sideLength = prompt("Please enter number of squares per side (max 100)"); 
-    removeGrid();
-    createGrid(); 
+    while(true) {
+        sideLength = prompt("Please enter number of squares per side (max 100)");
+        if(sideLength < 0 || sideLength > 100) {
+            alert("Invalid side length. Please try again!")
+        }
+        else {
+            removeGrid();
+            createGrid(); 
+            break; 
+        }
+    }
 });
 
 

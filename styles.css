@@ -1,3 +1,7 @@
+body {
+    background-color: turquoise;
+}
+
 .body-container {
     margin: auto; 
     border-color:aquamarine;
@@ -5,7 +9,6 @@
     border-width: thin;
     width: 480px;
     height: 480px; 
-    margin-bottom: 120px; 
 }
 
 .row-container{
@@ -13,13 +16,27 @@
 }
 
 .grid-square {
-    border: solid; 
-    border-color: aquamarine;
+    border-color:aquamarine;
+    border-style: solid;
+    border-width: thin;
 }
 
 .top-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 60px; 
+    padding-top: 25px; 
+    gap: 10px; 
+}
+
+button {
+    border-radius: 8px; 
+}
+
+.title {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px;
 }
 
