@@ -21,10 +21,18 @@ function createGrid() {
         }
     }
 }
+
+function removeGrid() {
+    const rows = container.querySelectorAll('.row-container'); 
+    rows.forEach(row => container.removeChild(row));
+}
+
 createGrid(); 
+
 const btn = document.querySelector('button'); 
 btn.addEventListener('click', () => {
     sideLength = prompt("Please enter number of squares per side (max 100)"); 
+    removeGrid();
     createGrid(); 
 });
 
