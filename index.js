@@ -1,5 +1,5 @@
 const gridContainerLength = 480; 
-let sideLength = 8;
+let sideLength = 16;
 
 const container = document.querySelector('.body-container');
 
@@ -22,8 +22,11 @@ function createGrid() {
     }
 }
 createGrid(); 
-
 const btn = document.querySelector('button'); 
+btn.addEventListener('click', () => {
+    sideLength = prompt("Please enter number of squares per side (max 100)"); 
+    createGrid(); 
+});
 
 
 
