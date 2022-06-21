@@ -1,19 +1,25 @@
-
-.container {
+.body-container {
+    margin: auto; 
     border-color:aquamarine;
     border-style: solid;
     border-width: thin;
-    width: 600px;
-    height: 600px; 
+    width: 480px;
+    height: 480px; 
+    margin-bottom: 120px; 
 }
 
 .row-container{
-    height: 37.5px;
     display: flex;
 }
 
 .grid-square {
-    width: 37.5px; 
     border: solid; 
     border-color: aquamarine;
 }
+
+.top-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
