@@ -5,7 +5,10 @@ const container = document.querySelector('.body-container');
 
 function changeSquareColour(e, colour) {
     if(colour === "rainbow") {
-        e.style.backgroundColor = "black";
+        let randomRValue = Math.floor(Math.random() * 256);  
+        let randomGValue = Math.floor(Math.random() * 256); 
+        let randomBValue = Math.floor(Math.random() * 256); 
+        e.style.backgroundColor = `rgb(${randomRValue}, ${randomGValue}, ${randomBValue})`;
     }
     else {
         e.style.backgroundColor = colour;
@@ -57,7 +60,13 @@ squareBtn.addEventListener('click', () => {
 const blackBtn = document.querySelector('.black-squares');
 blackBtn.addEventListener('click', () => {
     removeGrid();
-    createGrid("black")
+    createGrid("black"); 
+});
+
+const rainbowBtn = document.querySelector('.rainbow-squares');
+rainbowBtn.addEventListener('click', () => {
+    removeGrid();
+    createGrid("rainbow");
 });
 
 
