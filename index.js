@@ -3,11 +3,17 @@ let sideLength = 16;
 
 const container = document.querySelector('.body-container'); 
 
-function changeGridSquareColour(e) {
-    e.style.backgroundColor = "black"; 
+function changeSquareColour(e, colour) {
+    if(colour === "rainbow") {
+        e.style.backgroundColor = "black";
+    }
+    else {
+        e.style.backgroundColor = colour;
+    }
+    
 }
 
-function createGrid() {
+function createGrid(colour) {
     for(let i = 0; i < sideLength; i++) {
         const row = document.createElement('div');
         row.classList.add('row-container');
@@ -19,7 +25,7 @@ function createGrid() {
             gridSquare.classList.add('grid-square'); 
             gridSquare.style.width = gridContainerLength/sideLength + "px"; 
             gridSquare.addEventListener('mouseenter', function(e) {
-                changeGridSquareColour(e.target);
+                changeSquareColour(e.target, colour);
             });
             row.appendChild(gridSquare); 
         }
@@ -31,10 +37,10 @@ function removeGrid() {
     rows.forEach(row => container.removeChild(row));
 }
 
-createGrid(); 
+createGrid("grey"); 
 
-const btn = document.querySelector('button'); 
-btn.addEventListener('click', () => {
+const squareBtn = document.querySelector('.square-number'); 
+squareBtn.addEventListener('click', () => {
     while(true) {
         sideLength = prompt("Please enter number of squares per side (max 100)");
         if(sideLength < 0 || sideLength > 100) {
@@ -42,10 +48,16 @@ btn.addEventListener('click', () => {
         }
         else {
             removeGrid();
-            createGrid(); 
+            createGrid("grey"); 
             break; 
         }
     }
+});
+
+const blackBtn = document.querySelector('.black-squares');
+blackBtn.addEventListener('click', () => {
+    removeGrid();
+    createGrid("black")
 });
 
 
