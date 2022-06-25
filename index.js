@@ -1,5 +1,6 @@
 const gridContainerLength = 480; 
-let sideLength = 16;
+const DEFAULT_COLOUR = 'grey'; 
+const sideLength = 16;
 
 const container = document.querySelector('.body-container'); 
 
@@ -27,7 +28,7 @@ function createGrid(colour) {
             const gridSquare = document.createElement('div'); 
             gridSquare.classList.add('grid-square'); 
             gridSquare.style.width = gridContainerLength/sideLength + "px"; 
-            gridSquare.addEventListener('mouseenter', function(e) {
+            gridSquare.addEventListener('mouseenter', e => {
                 changeSquareColour(e.target, colour);
             });
             row.appendChild(gridSquare); 
@@ -51,7 +52,7 @@ squareBtn.addEventListener('click', () => {
         }
         else {
             removeGrid();
-            createGrid("grey"); 
+            createGrid(DE); 
             break; 
         }
     }
@@ -68,6 +69,13 @@ rainbowBtn.addEventListener('click', () => {
     removeGrid();
     createGrid("rainbow");
 });
+
+const clearBtn = document.querySelector('.clear'); 
+clearBtn.addEventListener('click', () => {
+    removeGrid();
+    createGrid("grey");
+});
+
 
 
 
