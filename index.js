@@ -1,18 +1,20 @@
 const gridContainerLength = 480; 
 const DEFAULT_COLOUR = 'grey'; 
-const sideLength = 16;
+let sideLength = 16;
+let currentMode = "grey"; 
 
 const container = document.querySelector('.body-container'); 
 
-function changeSquareColour(e, colour) {
-    if(colour === "rainbow") {
+//FUNCTIONS
+function changeSquareColour(e) {
+    if(currentMode === "rainbow") {
         let randomRValue = Math.floor(Math.random() * 256);  
         let randomGValue = Math.floor(Math.random() * 256); 
         let randomBValue = Math.floor(Math.random() * 256); 
-        e.style.backgroundColor = `rgb(${randomRValue}, ${randomGValue}, ${randomBValue})`;
+        e.target.style.backgroundColor = `rgb(${randomRValue}, ${randomGValue}, ${randomBValue})`;
     }
-    else {
-        e.style.backgroundColor = colour;
+    else{
+        e.target.style.backgroundColor = currentMode;
     }
     
 }
@@ -28,9 +30,7 @@ function createGrid(colour) {
             const gridSquare = document.createElement('div'); 
             gridSquare.classList.add('grid-square'); 
             gridSquare.style.width = gridContainerLength/sideLength + "px"; 
-            gridSquare.addEventListener('mouseenter', e => {
-                changeSquareColour(e.target, colour);
-            });
+            gridSquare.addEventListener('mouseenter', changeSquareColour);
             row.appendChild(gridSquare); 
         }
     }
@@ -41,8 +41,7 @@ function removeGrid() {
     rows.forEach(row => container.removeChild(row));
 }
 
-createGrid("grey"); 
-
+//BUTTONS
 const squareBtn = document.querySelector('.square-number'); 
 squareBtn.addEventListener('click', () => {
     while(true) {
@@ -60,23 +59,23 @@ squareBtn.addEventListener('click', () => {
 
 const blackBtn = document.querySelector('.black-squares');
 blackBtn.addEventListener('click', () => {
-    removeGrid();
-    createGrid("black"); 
+    currentMode = "black";    
 });
 
 const rainbowBtn = document.querySelector('.rainbow-squares');
 rainbowBtn.addEventListener('click', () => {
-    removeGrid();
-    createGrid("rainbow");
-});
+    currentMode = "rainbow";
+})
 
 const clearBtn = document.querySelector('.clear'); 
 clearBtn.addEventListener('click', () => {
-    removeGrid();
-    createGrid("grey");
+    const gridSquares = document.querySelectorAll('.grid-square'); 
+    gridSquares.forEach(gridSquare => {
+        gridSquare.style.backgroundColor = 'turquoise';
+    });
 });
 
-
+createGrid(DEFAULT_COLOUR); 
 
 
 
