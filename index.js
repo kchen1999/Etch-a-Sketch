@@ -41,22 +41,19 @@ function removeGrid() {
     rows.forEach(row => container.removeChild(row));
 }
 
-//BUTTONS
-const squareBtn = document.querySelector('.square-number'); 
-squareBtn.addEventListener('click', () => {
-    while(true) {
-        sideLength = prompt("Please enter number of squares per side (max 100)");
-        if(sideLength < 0 || sideLength > 100) {
-            alert("Invalid side length. Please try again!")
-        }
-        else {
-            removeGrid();
-            createGrid(DE); 
-            break; 
-        }
-    }
+//SLIDER
+const rangeSlider = document.querySelector('.slider'); 
+const gridSizeValue = document.querySelector('.grid-size');
+rangeSlider.addEventListener('mouseup', () => {
+    removeGrid();
+    sideLength = rangeSlider.value;
+    createGrid(currentMode); 
+    gridSizeValue.textContent = sideLength; 
 });
 
+
+ 
+//BUTTONS
 const blackBtn = document.querySelector('.black-squares');
 blackBtn.addEventListener('click', () => {
     currentMode = "black";    

@@ -27,11 +27,13 @@ body {
     align-items: center;
     margin-bottom: 60px; 
     padding-top: 25px; 
-    gap: 10px; 
+    gap: 16px; 
 }
 
 button {
     border-radius: 8px; 
+    border-color: blue;
+    padding: 5px; 
 }
 
 .title {
@@ -40,3 +42,6 @@ button {
     font-size: 60px;
 }
 
+.grid-size {
+    font-family: 'Dancing Script', cursive;
+}
